@@ -1,0 +1,165 @@
+	/* Core */
+    		:link,:visited,ins { text-decoration:none }
+nav ul,nav ol { list-style:none }
+dl,ul,ol,li,
+h1,h2,h3,h4,h5,h6,
+html,body,pre,p,blockquote,
+form,fieldset,input,label
+{ margin:0; padding:0 }
+abbr, img, object,
+a img,:link img,:visited img,
+a object,:link object,:visited object
+{ border:0 }
+address,abbr { font-style:normal }
+iframe:not(.auto-link) { display:none ! important; visibility:hidden ! important; margin-left: -10000px ! important  }
+a {
+  color: #0088cc;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  color: #005580;
+  text-decoration: underline;
+}
+
+/* Typography*/
+body {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	line-height: 20px;
+	color: #333333;
+	height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 10px 0;
+  font-family: inherit;
+  font-weight: bold;
+  line-height: 20px;
+  color: inherit;
+  text-rendering: optimizelegibility;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 40px;
+}
+
+h1 {
+  font-size: 38.5px;
+}
+
+h2 {
+  font-size: 31.5px;
+  margin-bottom: 0px;
+}
+
+h3 {
+  font-size: 24.5px;
+}
+
+h4 {
+  font-size: 17.5px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  font-size: 11.9px;
+}
+
+
+
+/* Custom style */
+#wrapper{width: 100%;height: 100vh;margin-top: 10px;}
+#wrapper{font-size: 16px;font-weight: bold;}
+
+#wrapper #input{width: 50%;float: left;height: 100%;}
+#wrapper #input h2{color: #0098A2;margin-left: 5px;}
+#wrapper #input #inputTriggers{width: 100%;height: 100%;color: white;background-color: #0098A2;}
+#wrapper #input #inputTriggers table{padding: 15px;width: 100%;}
+#wrapper #input #inputTriggers table tr{width: 100%;}
+#wrapper #input #inputTriggers table tr td{width: 33.3%;}
+
+#wrapper #output{width: 50%;float: left;height: 100%;}
+#wrapper #output h2{color: #CD003C;margin-left: 5px;}
+#wrapper #output #outputData{width: 100%;height: 100%;color: white;background-color: #CD003C;}
+#wrapper #output #outputData table{padding: 15px;}
+#wrapper #output #outputData table tr td{padding-bottom: 8px;}
+
+/* === Tablets landscape mode === */
+@media only screen 
+and (max-device-width : 1024px){
+
+}
+
+/* === Tablets (portrait) to max 768px === */
+@media only screen 
+and (max-device-width : 768px) 
+and (orientation : portrait) {
+
+}
+
+/* === Smartphones Landscape AND Portrait mode === */
+/* === Smartphones Portrait + Landscape === */ 
+@media only screen 
+and (max-device-width : 720px){
+	#wrapper{margin-top: 0px;}
+
+	#wrapper #input{width: 100%;height: auto;}
+	
+	#wrapper #output{width: 100%;height: auto;}
+	#wrapper #output #outputData table tr td{font-size: 18px;}
+}
+
+/* Button styles*/
+.buttonOn {
+				border-radius: 6px;
+				cursor: pointer;
+				font-size: 14px;
+				padding: 5px;
+				width: 80%;
+				color: #ffffff;
+				text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+				background-color: #5bb75b;
+				background-image: -moz-linear-gradient(top, #62c462, #51a351);
+				background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#62c462), to(#51a351));
+				background-image: -webkit-linear-gradient(top, #62c462, #51a351);
+				background-image: -o-linear-gradient(top, #62c462, #51a351);
+				background-image: linear-gradient(to bottom, #62c462, #51a351);
+				background-repeat: repeat-x;
+				border-color: #51a351 #51a351 #387038;
+				border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff62c462', endColorstr='#ff51a351', GradientType=0);
+				filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+			}
+
+.buttonOff  {
+				border-radius: 6px;
+				cursor: pointer;
+				font-size: 14px;
+				padding: 5px;
+				width: 80%;
+				color: #ffffff;
+				text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+				background-color: #da4f49;
+				background-image: -moz-linear-gradient(top, #ee5f5b, #bd362f);
+				background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ee5f5b), to(#bd362f));
+				background-image: -webkit-linear-gradient(top, #ee5f5b, #bd362f);
+				background-image: -o-linear-gradient(top, #ee5f5b, #bd362f);
+				background-image: linear-gradient(to bottom, #ee5f5b, #bd362f);
+				background-repeat: repeat-x;
+				border-color: #bd362f #bd362f #802420;
+				border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffee5f5b', endColorstr='#ffbd362f', GradientType=0);
+				filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+			}

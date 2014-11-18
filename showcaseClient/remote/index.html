@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Showcase Johnny five - Arduino - Raspberry</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+		<div id="wrapper">
+			<div id="input">
+				<h2>Arduino Triggers</h2>
+				<div id="inputTriggers">
+					<table>
+						<tbody>
+							<tr><td>LED:</td><td><button id="ledOn" class="buttonOn">On</button></td><td><button id="ledOff" class="buttonOff">Off</button></td></tr>
+							<tr><td>Servo:</td><td><button id="servoOn" class="buttonOn">CW</button></td><td><button id="servoOff" class="buttonOff">CCW</button></td></tr>
+							<tr><td>Buzzer:</td><td><button id="buzzerOn" class="buttonOn">Play song</button></td></tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div id="output">
+				<h2>Arduino Data</h2>
+				<div id="outputData">
+					<table>
+						<tbody>
+							<tr><td>Temperatuur:<br><span id="tempData">1</span> graden</td></tr>
+							<tr><td>Light:<br><span id="lightData">1</span> lux</td></tr>
+							<tr><td>Potmeter:<br><span id="potData">1</span></td></tr>
+							<tr><td>Force Sensitive Resistor:<br><span id="fsrData">1</span></td></tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="js/script.js"></script>
+    </body>
+</html>

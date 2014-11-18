@@ -1,0 +1,165 @@
+<!doctype html>
+<html>
+<head>
+    <title>Arduino web interface</title>
+    <style>
+        #console {
+            height: 100px;
+            width: 100%;
+            border: solid 1px black;
+            font-family: "monospace";
+            overflow: scroll;
+        }
+        #consoleFsr{
+            height: 100px;
+            width: 100%;
+            border: solid 1px black;
+            font-family: "monospace";
+            overflow: scroll;
+        }
+        #consoleLdr{
+            height: 100px;
+            width: 100%;
+            border: solid 1px black;
+            font-family: "monospace";
+            overflow: scroll;
+        }
+        #consoleTemp{
+            height: 100px;
+            width: 100%;
+            border: solid 1px black;
+            font-family: "monospace";
+            overflow: scroll;
+        }        
+        #consolePot{
+            height: 100px;
+            width: 100%;
+            border: solid 1px black;
+            font-family: "monospace";
+            overflow: scroll;
+        }
+        #buzzer{
+            height: 30px;
+            width: 100%;
+            background: "red";
+        }
+    </style>
+</head>
+<body>
+<h1>Arduino web interface</h1>
+
+<div id="console"></div>
+<div id="consoleFsr"></div>
+<div id="consoleLdr"></div>
+<div id="consoleTemp"></div>
+<div id="consolePot"></div>
+<form id="send-message">
+    <input type="number" id="ms" placeholder="milliseconds"><br>
+    <input type="number" id="servo" placeholder="servo (degrees)"><br>
+    <!--<input type="submit" value="send"/>-->
+</form>
+<div id="buzzer">Klik hier</div>
+
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    jQuery(function ($) {
+        var socket = io.connect();
+        var $ms = $("#ms");
+        var $servo = $("#servo");
+        var $console = $("#console");
+        var $consoleFrs = $("#consoleFsr");
+        var $consoleLdr = $("#consoleLdr");
+        var $consoleTemp = $("#consoleTemp");
+        var $consolePot = $("#consolePot");
+
+        $('#ms').keypress(function (e) {
+            if (e.which === 13){
+                e.preventDefault();
+                socket.emit("setMilliseconds", $ms.val());
+                $ms.val("");
+            }
+        });
+
+        // $('#servo').keypress(function (e) {
+        //     if (e.which === 13){
+        //         e.preventDefault();
+        //         socket.emit("setServo", $servo.val());
+        //         $servo.val("");
+        //     }                
+        // });
+
+//  37 is links
+//  39 is rechts
+
+        $(document).keydown(function(e){
+            if (e.which == 37){
+                var ccw = ccw;
+                e.preventDefault();
+                console.log("links")
+                socket.emit("setServoCcw");
+            }
+            if (e.which == 39){ 
+                var cw = cw;
+                e.preventDefault();
+                console.log("rechts")
+                socket.emit("setServoCw");
+            }
+            if (e.which == 38){ 
+                var cw = cw;
+                e.preventDefault();
+                console.log("up is down")
+                socket.emit("motorRun");
+            };
+        });
+        
+        $(document).keyup(function(e){
+            if (e.which == 38){ 
+                var cw = cw;
+                e.preventDefault();
+                console.log("up is up")
+                socket.emit("motorStop");
+            };
+
+        });
+
+
+        $('#buzzer').click(function (e) {
+                socket.emit("playBuzzer");
+                console.log("klik")
+
+            
+        });
+
+        socket.on("logMessage", function (data) {
+            console.log(data);
+            $console.append(JSON.stringify(data));
+            $console.append("<br/>");
+        });
+
+        socket.on("logMessageFsr", function (data) {
+            console.log(data);
+            $consoleFrs.append(JSON.stringify(data));
+            $consoleFrs.append("<br/>");
+        });
+        socket.on("logMessageLdr", function (data) {
+            console.log(data);
+            $consoleLdr.append(JSON.stringify(data));
+            $consoleLdr.append("<br/>");
+        });
+
+        socket.on("logMessageTemp", function (data) {
+            console.log(data);
+            $consoleTemp.append(JSON.stringify(data));
+            $consoleTemp.append("<br/>");
+        });
+
+        socket.on("logMessagePot", function (data) {
+            console.log(data);
+            $consolePot.append(JSON.stringify(data));
+            $consolePot.append("<br/>");
+        });
+    });
+</script>
+</body>
+</html>

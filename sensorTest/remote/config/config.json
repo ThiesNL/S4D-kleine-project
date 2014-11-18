@@ -1,0 +1,17 @@
+{
+    "local": {
+        "pushButton": 8,
+        "fsr": "A0",
+        "lrd": "A1",
+        "potentiometer": "A2",
+        "temp": "A3",
+        "motor": 5,
+        "servo": 10,
+        "buzzer": 11,
+        "led": 13
+    },
+    "remote": {
+        "port":3003,
+        "fqdn": "http://server7.tezzt.nl"
+    }
+}

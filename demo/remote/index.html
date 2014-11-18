@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Demo</title>
+
+	<script src="/socket.io/socket.io.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
+<style>
+
+body{
+	font-family: 'Ubuntu', sans-serif;
+}
+
+/* Button styles*/
+.buttonOn {
+				border-radius: 6px;
+				cursor: pointer;
+				font-size: 14px;
+				padding: 5px;
+				width: 80px;
+				color: #ffffff;
+				text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+				background-color: #5bb75b;
+				background-image: -moz-linear-gradient(top, #62c462, #51a351);
+				background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#62c462), to(#51a351));
+				background-image: -webkit-linear-gradient(top, #62c462, #51a351);
+				background-image: -o-linear-gradient(top, #62c462, #51a351);
+				background-image: linear-gradient(to bottom, #62c462, #51a351);
+				background-repeat: repeat-x;
+				border-color: #51a351 #51a351 #387038;
+				border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff62c462', endColorstr='#ff51a351', GradientType=0);
+				filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+			}
+
+.buttonOff  {
+				border-radius: 6px;
+				cursor: pointer;
+				font-size: 14px;
+				padding: 5px;
+				width: 80px;
+				color: #ffffff;
+				text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+				background-color: #da4f49;
+				background-image: -moz-linear-gradient(top, #ee5f5b, #bd362f);
+				background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ee5f5b), to(#bd362f));
+				background-image: -webkit-linear-gradient(top, #ee5f5b, #bd362f);
+				background-image: -o-linear-gradient(top, #ee5f5b, #bd362f);
+				background-image: linear-gradient(to bottom, #ee5f5b, #bd362f);
+				background-repeat: repeat-x;
+				border-color: #bd362f #bd362f #802420;
+				border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffee5f5b', endColorstr='#ffbd362f', GradientType=0);
+				filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+			}
+
+</style>
+</head>
+<body>
+		<div id="wrapper">
+			<div id="output">
+				<h2>Output</h2>
+				<div id="output">
+							LED: 
+							<button id="ledOn" class="buttonOn">On</button>
+							<button id="ledOff" class="buttonOff">Off</button>
+				</div>
+			</div>
+			<div id="input">
+				<h2>Input</h2>
+				<div id="outputData">
+							Potmeter: <span id="potmeter">0</span>
+				</div>
+			</div>
+		</div>
+
+
+		<script>
+		var socket = io.connect();
+
+		//Define variables
+		var ledOn = document.getElementById("ledOn");
+		var ledOff = document.getElementById("ledOff");
+
+		ledOn.onclick = function(){
+			console.log("ledOn");
+		   	socket.emit("ledOn");
+		};
+		   			 
+		ledOff.onclick = function(){
+			console.log("ledOff");
+		   	socket.emit("ledOff");
+		};
+
+		socket.on("potmeter", function (data) {
+		    console.log(data);
+		document.getElementById("potmeter").innerHTML = data.value;
+
+		    });
+		</script>
+
+
+
+    </body>
+</html>
